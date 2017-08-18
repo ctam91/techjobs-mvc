@@ -16,7 +16,8 @@
         <table th:each="job : ${jobs}" class="job-listing">
             <tr th:each="item : ${job.keySet()}" >
                 <td th:text="${#strings.capitalizeWords(item)}"></td>
-                <td th:text="${job.get(item)}"></td>
+
+                <td><a th:unless="${item == 'name'}" th:text="${job.get(item)}" th:href="@{/list/jobs(column=${item},value=${job.get(item)})}"></a><span th:if="${item == 'name'}" th:text="${job.get(item)}"></span></td>
             </tr>
         </table>
     </div></div>
