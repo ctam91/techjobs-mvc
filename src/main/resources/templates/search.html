@@ -20,7 +20,7 @@
                         name="searchType"
                         th:id="${column.key}"
                         th:value="${column.key}"
-                        th:checked="${column.key == 'all'}"/>
+                        th:checked="${column.key == jobCategory}"/>
                 <label th:for="${column.key}" th:text="${column.value}"></label>
             </span>
 
@@ -35,7 +35,8 @@
     </form>
 
     <hr />
-    <span th:if="${jobs} and ${jobs.size()}"><h3 th:text="${jobs.size()} + ' Result(s)'"></h3></span>
+    <span th:if="${jobs} and ${jobs.size().equals(0)}"><h3>No job results found</h3></span>
+    <span th:if="${jobs} and ${jobs.size()}"><h3 th:text="${jobs.size()} + ' Result(s) found:'"></h3></span>
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
     <div th:if="${jobs} and ${jobs.size()}">
     <table th:each="job : ${jobs}" class="job-listing">
