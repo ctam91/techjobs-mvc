@@ -42,7 +42,8 @@
     <table th:each="job : ${jobs}" class="job-listing">
         <tr th:each="item : ${job.keySet()}" >
             <td th:text="${#strings.capitalizeWords(item)}"></td>
-            <td th:text="${job.get(item)}"></td>
+            <td><a th:href="@{/search/results(searchType='all',searchTerm=${job.get(item)})}" th:text="${job.get(item)}"></a></td>
+
         </tr>
     </table>
     </div>
