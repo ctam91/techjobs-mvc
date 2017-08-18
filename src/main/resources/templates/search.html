@@ -28,7 +28,7 @@
 
         <p>
             <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" />
+            <input type="text" name="searchTerm" id="searchTerm" th:value="${searchTerm}" />
         </p>
 
         <input type="submit" value="Search" />
@@ -42,7 +42,7 @@
     <table th:each="job : ${jobs}" class="job-listing">
         <tr th:each="item : ${job.keySet()}" >
             <td th:text="${#strings.capitalizeWords(item)}"></td>
-            <td><a th:href="@{/search/results(searchType='all',searchTerm=${job.get(item)})}" th:text="${job.get(item)}"></a></td>
+            <td><a th:text="${job.get(item)}" th:unless="${item == 'name'}" th:href="@{/search/results(searchType='all',searchTerm=${job.get(item)})}"></a><span th:if="${item == 'name'}" th:text="${job.get(item)}"></span></td>
 
         </tr>
     </table>
