@@ -162,4 +162,12 @@ public class JobData {
         }
     }
 
+    public static String getCategory(String column){
+        String jobCategory = column;
+        if(column == null) {
+           jobCategory = "all";
+        }
+        return jobCategory;
+    }
+
 }
